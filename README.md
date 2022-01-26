@@ -30,6 +30,7 @@ Running the two scripts will generate the tables (in HTML format) and figures (i
 Run the scripts in a new R session, or restart the R session in RStudio, to avoid conflicts with other versions of required packages that may already be loaded.
 
 The scripts use R (R Core Team, 2021) and the following packages
+* `groundhog`: Simonsohn & Gruson, 2021.
 * `dplyr`: Wickham et al., 2021.
 * `table1`: Rich, 2021.
 * `markdown`: Allaire et al., 2019.
@@ -69,6 +70,8 @@ R Core Team (2021). R: A language and environment for statistical computing. R F
 Revelle, W. (2021) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych
 
 Rich, Benjamin (2021). table1: Tables of Descriptive Statistics in HTML.  https://CRAN.R-project.org/package=table1
+
+Simonsohn, Uri and Hugo Gruson (2021). groundhog: The Simplest Solution to Version-Control for CRAN Packages. https://CRAN.R-project.org/package=groundhog
 
 Wickham, H (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.
 
