@@ -25,9 +25,7 @@ groundhog_day <- "2021-11-10"
 groundhog.library(packages, groundhog_day)
 
 
-# Set some variable to control text size in plots and figure dimensions
-ax.siz <- 10
-lab.siz <- 12
+# Set variables to control figure dimensions
 fig.width <- 12
 fig.height <- 10
 
@@ -646,28 +644,3 @@ htmlreg(list(model_1_beh_std, model_2_beh_std,
        include.aic = FALSE, include.bic = FALSE,
        include.loglik = FALSE, include.rsquared = TRUE,
        file = "table_6.html")
-
-
-
-texreg(list(model_1_beh_std, model_2_beh_std,
-             model_3_beh_std, model_4_beh_std,
-             model_5_soc_std,
-             model_6_pol_std),
-       digits = 2,
-       custom.header = list("Behavioral trust" = 1:4,
-                            "Social trust" = 5,
-                            "Political trust" = 6),
-       custom.coef.names = c("(Intercept)", "Tolerating", "Concealing",
-                             "Adjusting", "Valence", "Arousal",
-                             "Age", "Sex (male)",
-                             "Ideology", "Salience",
-                             "Tolerating:Valence", "Tolerating:Arousal",
-                             "Concealing:Valence", "Concealing:Arousal",
-                             "Adjusting:Valence", "Adjusting:Arousal"),
-       caption = "The impact of affective styles on behavioral trust",
-       include.aic = FALSE, include.bic = FALSE,
-       include.loglik = FALSE, include.rsquared = TRUE,
-       label = "tab:trust_models", float.pos = "ht!",
-       booktabs = TRUE, dcolumn = TRUE, use.packages = FALSE,
-       file = "behavioral_trust.tex"
-       )
