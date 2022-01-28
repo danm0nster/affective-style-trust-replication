@@ -3,7 +3,7 @@
 # Replication data and code for  _The Affective Style of Politics_
 
 This repository contains data and R code to replicate the results in the article
-> Nielsen, J. H., & Mønster, D. (2021). The Affective Style of Politics: Evidence from Surveys and Laboratory Experiments. https://doi.org/10.17605/OSF.IO/FJ6DZ
+> Nielsen, J. H., & Mønster, D. (2021). The Affective Style of Politics: Evidence from Surveys and Laboratory Experiments. https://doi.org/10.31219/osf.io/59dva
 
 ## Data
 The following three data files are included:
@@ -66,7 +66,7 @@ Leifeld, Philip (2013). texreg: Conversion of Statistical Model Output in R to L
 
 Lenth, Russell V. (2021). emmeans: Estimated Marginal Means, aka Least-Squares Means. https://CRAN.R-project.org/package=emmeans
 
-Nielsen, J. H., & Mønster, D. (2021). The Affective Style of Politics: Evidence from Surveys and Laboratory Experiments. OSF preprint. [DOI: 10.17605/OSF.IO/FJ6DZ](https://doi.org/10.17605/OSF.IO/FJ6DZ)
+Nielsen, J. H., & Mønster, D. (2021). The Affective Style of Politics: Evidence from Surveys and Laboratory Experiments. OSF preprint. [DOI: 10.31219/osf.io/59dva](https://doi.org/10.31219/osf.io/59dva)
 
 R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/.
 
