@@ -37,6 +37,7 @@ The scripts use R (R Core Team, 2021) and the following packages
 * `psych`: Revelle 2021.
 * `kableExtra`: Zhu, 2021.
 * `lme4`: Bates et al., 2015.
+* `MuMIn`: Bartón, 2020.
 * `lmerTest`: Kuznetsova et al., 2017.
 * `texreg`: Leifeld, 2013.
 * `effectsize`: Ben-Shachar et al., 2020.
@@ -48,6 +49,8 @@ The scripts use R (R Core Team, 2021) and the following packages
 
 ## References
 Allaire, JJ, Jeffrey Horner, Yihui Xie, Vicent Marti and Natacha Porte (2019). markdown: Render Markdown with the C Library 'Sundown'. https://CRAN.R-project.org/package=markdown
+
+Bartoń, Kamil (2020). MuMIn: Multi-Model Inference.  https://CRAN.R-project.org/package=MuMIn
 
 Ben-Shachar M, Lüdecke D, Makowski D (2020). effectsize: Estimation of Effect Size Indices and Standardized Parameters. Journal of Open Source Software, 5(56), 2815. doi: 10.21105/joss.02815
 

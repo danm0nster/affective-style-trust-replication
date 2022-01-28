@@ -15,6 +15,7 @@ packages <- c("dplyr",
               "psych",
               "kableExtra",
               "lme4",
+              "MuMIn",
               "lmerTest",
               "texreg",
               "effectsize")
