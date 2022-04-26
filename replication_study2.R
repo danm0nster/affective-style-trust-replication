@@ -2,7 +2,7 @@
 # title: 'Replication code for Study 2 in _The Affective Style of Politics: 
 #    Evidence from Surveys and Laboratory Experiments_'
 # author: "Julie Hassing Nielsen & Dan M&oslash;nster"
-# date: "January 2022"
+# date: "April 2022"
 # ---
 
 # The groundhog package is used to ensure reproducibility.
@@ -411,8 +411,6 @@ markdown::markdownToHTML(text = kbl(replace(fa_loadings_cut,
                          output = "table_a16.html")
 
 
-## DAN pointer (kommet hertil)
-
 ## Figure 2a: Manipulation check for SAM valence
 
 ggplot(data = SAM.valence.by.treatment,
@@ -506,77 +504,8 @@ pairwise_table <- kable(v_a_pairwise, "html", booktabs = TRUE,
 write(pairwise_table, file = "table_4.html", sep = "\n")
 
 
-## Table 5: The impact of affective styles on SAM valence and arousal
 
-# This tests whether affective styles moderate the effect of the IAPS stimuli
-# on the self-reported SAM valence and arousal.
-
-# Valence
-
-valence_simple <- lmer(data = data.valence.long,
-                          SAM.valence.value ~ tolerating.normalized +
-                            concealing.normalized +
-                            adjusting.normalized +
-                            treatment + (1 | round))
-
-valence_simple_std <- standardize(valence_simple,
-                                     method = "refit", two_sd = FALSE,
-                                     include_response = TRUE)
-
-valence_moderation <- lmer(data = data.valence.long,
-                          SAM.valence.value ~ (tolerating.normalized +
-                            concealing.normalized +
-                            adjusting.normalized) *
-                            treatment + (1 | round))
-
-valence_moderation_std <- standardize(valence_moderation,
-                                      method = "refit", two_sd = FALSE,
-                                      include_response = TRUE)
-
-
-
-# Arousal
-arousal_simple <- lmer(data = data.arousal.long,
-                          SAM.arousal.value ~ tolerating.normalized +
-                            concealing.normalized +
-                            adjusting.normalized +
-                            treatment + (1 | round))
-
-arousal_simple_std <- standardize(arousal_simple,
-                                     method = "refit", two_sd = FALSE,
-                                     include_response = TRUE)
-
-arousal_moderation <- lmer(data = data.arousal.long,
-                          SAM.arousal.value ~ (tolerating.normalized +
-                            concealing.normalized +
-                            adjusting.normalized) *
-                            treatment + (1 | round))
-
-arousal_moderation_std <- standardize(arousal_moderation,
-                                     method = "refit", two_sd = FALSE,
-                                     include_response = TRUE)
-
-htmlreg(list(valence_simple_std, valence_moderation_std,
-             arousal_simple_std, arousal_moderation_std),
-        digits = 2,
-        custom.header = list("Valence" = 1:2, "Arousal" = 3:4),
-        custom.coef.names = c("(Intercept)", "Tolerating", "Concealing",
-                              "Adjusting",
-                              "Joy", "Disgust", "Fear",
-                              "Tolerating:Joy", "Tolerating:Disgust",
-                              "Tolerating:Fear",
-                              "Concealing:Joy", "Concealing:Disgust",
-                              "Concealing:Fear",
-                              "Adjusting:Joy", "Adjusting:Disgust",
-                              "Adjusting:Fear "),
-        caption = "The impact of affective styles on SAM valence and arousal",
-        include.aic = FALSE, include.bic = FALSE,
-        include.loglik = FALSE, include.rsquared = TRUE,
-        file = "table_5.html")
-
-
-
-## Table 6
+## Table 5
 
 # Models
 
@@ -603,44 +532,104 @@ model_3_beh_std <- standardize(model_3_beh, method = "refit", two_sd = FALSE,
                                      include_response = TRUE)
 
 
-model_4_beh <- lm(data = sam_average,
-              Contribution ~ (Tolerating + Concealing + Adjusting) *
-                (valence + arousal) + age + sex + ideology + salience)
-
-model_4_beh_std <- standardize(model_4_beh, method = "refit", two_sd = FALSE,
-                                     include_response = TRUE)
-
-
-model_5_soc <- lm(data = sam_average,
+model_4_soc <- lm(data = sam_average,
               Social ~ Tolerating + Concealing + Adjusting +
                 age + sex + ideology + salience)
 
-model_5_soc_std <- standardize(model_5_soc, method = "refit", two_sd = FALSE,
+model_4_soc_std <- standardize(model_4_soc, method = "refit", two_sd = FALSE,
                                      include_response = TRUE)
 
-model_6_pol <- lm(data = sam_average,
+model_5_pol <- lm(data = sam_average,
               trust_index ~ Tolerating + Concealing + Adjusting +
                 + age + sex + ideology + salience)
 
-model_6_pol_std <- standardize(model_6_pol, method = "refit", two_sd = FALSE,
+model_5_pol_std <- standardize(model_5_pol, method = "refit", two_sd = FALSE,
                                      include_response = TRUE)
 
-htmlreg(list(model_1_beh_std, model_2_beh_std,
-             model_3_beh_std, model_4_beh_std,
-             model_5_soc_std,
-             model_6_pol_std),
+htmlreg(list(model_1_beh_std,
+             model_2_beh_std,
+             model_3_beh_std,
+             model_4_soc_std,
+             model_5_pol_std),
        digits = 2,
-       custom.header = list("Behavioral trust" = 1:4,
-                            "Social trust" = 5,
-                            "Political trust" = 6),
+       custom.header = list("Behavioral trust" = 1:3,
+                            "Social trust" = 4,
+                            "Political trust" = 5),
        custom.coef.names = c("(Intercept)", "Tolerating", "Concealing",
                              "Adjusting", "Valence", "Arousal",
                              "Age", "Sex (male)",
-                             "Ideology", "Salience",
-                             "Tolerating:Valence", "Tolerating:Arousal",
-                             "Concealing:Valence", "Concealing:Arousal",
-                             "Adjusting:Valence", "Adjusting:Arousal"),
-       caption = "Behavioral, social and political trust",
+                             "Ideology", "Salience"),
+       caption = "The impact of affective styles on behavioral trust",
        include.aic = FALSE, include.bic = FALSE,
        include.loglik = FALSE, include.rsquared = TRUE,
-       file = "table_6.html")
+       file = "table_5.html")
+
+## Table 6: The impact of affective styles on SAM valence and arousal
+
+# This tests whether affective styles moderate the effect of the IAPS stimuli
+# on the self-reported SAM valence and arousal.
+
+# Valence
+
+valence_simple <- lmer(data = data.valence.long,
+                       SAM.valence.value ~ tolerating.normalized +
+                         concealing.normalized +
+                         adjusting.normalized +
+                         treatment + (1 | round))
+
+valence_simple_std <- standardize(valence_simple,
+                                  method = "refit", two_sd = FALSE,
+                                  include_response = TRUE)
+
+valence_moderation <- lmer(data = data.valence.long,
+                           SAM.valence.value ~ (tolerating.normalized +
+                                                  concealing.normalized +
+                                                  adjusting.normalized) *
+                             treatment + (1 | round))
+
+valence_moderation_std <- standardize(valence_moderation,
+                                      method = "refit", two_sd = FALSE,
+                                      include_response = TRUE)
+
+
+
+# Arousal
+arousal_simple <- lmer(data = data.arousal.long,
+                       SAM.arousal.value ~ tolerating.normalized +
+                         concealing.normalized +
+                         adjusting.normalized +
+                         treatment + (1 | round))
+
+arousal_simple_std <- standardize(arousal_simple,
+                                  method = "refit", two_sd = FALSE,
+                                  include_response = TRUE)
+
+arousal_moderation <- lmer(data = data.arousal.long,
+                           SAM.arousal.value ~ (tolerating.normalized +
+                                                  concealing.normalized +
+                                                  adjusting.normalized) *
+                             treatment + (1 | round))
+
+arousal_moderation_std <- standardize(arousal_moderation,
+                                      method = "refit", two_sd = FALSE,
+                                      include_response = TRUE)
+
+htmlreg(list(valence_simple_std, valence_moderation_std,
+             arousal_simple_std, arousal_moderation_std),
+        digits = 2,
+        custom.header = list("Valence" = 1:2, "Arousal" = 3:4),
+        custom.coef.names = c("(Intercept)", "Tolerating", "Concealing",
+                              "Adjusting",
+                              "Joy", "Disgust", "Fear",
+                              "Tolerating:Joy", "Tolerating:Disgust",
+                              "Tolerating:Fear",
+                              "Concealing:Joy", "Concealing:Disgust",
+                              "Concealing:Fear",
+                              "Adjusting:Joy", "Adjusting:Disgust",
+                              "Adjusting:Fear "),
+        caption = "The impact of affective styles on SAM valence and arousal",
+        include.aic = FALSE, include.bic = FALSE,
+        include.loglik = FALSE, include.rsquared = TRUE,
+        file = "table_6.html")
+
+
